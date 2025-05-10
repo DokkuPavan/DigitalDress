@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up Page</title>
+<link rel="stylesheet" href="{% static 'css/signup_style.css' %}">
+<script>
+    document.getElementById('signupForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+    
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+    
+        // Here you can add your signup logic, for example, store user data in a database
+        // For demo purposes, we'll just show an alert message
+        var alertBanner = document.getElementById('alert');
+        var alertText = document.getElementById('alertText');
+        alertText.textContent = 'Account created for ' + name + ' (' + email + ')';
+        alertBanner.classList.add('show');
+    
+        // Hide the alert after 3 seconds
+        setTimeout(function() {
+            alertBanner.classList.remove('show');
+        }, 3000);
+    
+    });
+</script>    
+</head>
+<body>
+<div class="container">
+    <form id="signupForm" class="signup-form" method="post"> {% csrf_token %}
+        <h2>Sign Up</h2>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Sign Up</button>
+        <div class="login-link">
+            Already have an account? <a href="{% url 'login' %}">Login</a>
+        </div>
+    </form>
+    <div id="alert" class="alert-message hidden">
+        <span class="icon">&#10003;</span>
+        <span id="alertText"></span>
+    </div>
+</div>
+</body>
+</html>
+

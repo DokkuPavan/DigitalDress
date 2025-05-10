@@ -1,0 +1,25 @@
+{
+    "orders": [
+        {
+            "id": "1",
+            "user_id": "1",
+            "clothes_id": "1",
+            "transaction_date": "2024-03-16",
+            "total_amount": 50.00
+        },
+        {
+            "id": "2",
+            "user_id": "2",
+            "clothes_id": "4",
+            "transaction_date": "2024-03-16",
+            "total_amount": 25.00
+        },
+        {
+            "id": "3",
+            "user_id": "2",
+            "clothes_id": "6",
+            "transaction_date": "2024-03-19",
+            "total_amount": 35.00
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+<nav class="header__menu">
+    <ul>
+        <li  class={{home}}><a href="{% url 'home' %}">Home</a></li>
+        <li  class={{shop}}><a href="{% url 'shop' %}">Shop</a></li>
+        <li><a href="#">Menu</a>
+            <ul class="dropdown">
+                <li class={{shop}}><a href="{% url 'shop' %}">Products</a></li>
+                <li class={{checkout}}><a href="{% url 'checkout' %}">Checkout</a></li>
+            </ul>
+        </li>
+        <li class={{trial}}><a href="{% url 'trial' %}">Trail Room</a></li>
+        <li class={{contact}}><a href="{% url 'contact' %}">Contact</a></li>
+    </ul>
+</nav>

@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Profile</title>
+<!-- Css Styles -->
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h1 {
+        color: #333;
+        text-align: center;
+    }
+    .profile-info {
+        margin-bottom: 20px;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    input[type="text"], input[type="email"], input[type="password"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .eye-icon {
+        cursor: pointer;
+        position: absolute;
+        right: 10px;
+        top: 12px;
+    }
+    .cart-images, .order-images {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .cart-images img, .order-images img {
+        max-width: 100px;
+        margin: 5px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+</style>
+</head>
+<body>
+    {% include 'navigation.html' %}
+<div class="container">
+    <h1>User Profile</h1>
+    {% if user_details %}
+        <div class="profile-info">
+            <label for="name">Name:</label>
+            <input type="text" id="name" value="{{ user_details.name }}" disabled>
+            <label for="email">Email:</label>
+            <input type="email" id="email" value="{{ user_details.email }}" disabled>
+            <label for="password">Password:</label>
+            <div style="position: relative;">
+                <input type="password" id="password" value="{{ user_details.password }}" disabled>
+                <span class="eye-icon" onclick="togglePassword()">👁️</span>
+            </div>
+        </div>
+        <div class="cart-images">
+            <label>Product Images in Cart:</label>
+            <ul>
+                {% for item_id in user_details.cart %}
+                    {% for item in clothes_data.clothes %}
+                        {% if item.id == item_id %}
+                            <div style="width: 200px; margin: 10px;">
+                                <img src="{{ item.image_url }}" alt="{{ item.name }}" style="max-width: 100%;">
+                                <p><strong>{{ item.name }}</strong></p>
+                                <p>{{ item.description }}</p>
+                                <p>Price: ${{ item.price }}</p>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% empty %}
+                    <p> No items found on cart </p>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="order-images">
+            <label>Previous Order Images:</label>
+            {% if user_order_items %}
+                {% for order in user_order_items %}
+                    <ul>
+                        {% for item in order.items %}
+                            <div style="width: 200px; margin: 10px;">
+                                <img src="{{ item.image_url }}" alt="{{ item.name }}" style="max-width: 100%;">
+                                <strong>{{ item.name }}</strong> - {{ item.description }} - ${{ item.price }}
+                                <h5>Order ID: {{ order.id }}</h5>
+                                <p>Transaction Date: {{ order.transaction_date }}</p>
+                                <p>Total Amount: ${{ order.total_amount }}</p>
+                            </div>
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
+            {% else %}
+                <p>No previous orders found.</p>
+            {% endif %}
+        </div>
+    {% else %}
+        <p>No user details found.</p>
+    {% endif %}
+</div>
+<script>
+    function togglePassword() {
+        var passwordInput = document.getElementById("password");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    }
+</script>
+</body>
+</html>

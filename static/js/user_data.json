@@ -1,0 +1,38 @@
+{
+    "users": [
+        {
+            "id": "1",
+            "name": "John Doe",
+            "email": "john.doe@example.com",
+            "password": "john",
+            "cart": [
+                "1"
+            ]
+        },
+        {
+            "id": "2",
+            "name": "Jane Smith",
+            "email": "jane.smith@example.com",
+            "password": "jane",
+            "cart": [
+                "2"
+            ]
+        },
+        {
+            "id": "3",
+            "name": "pardhu",
+            "email": "pardhu9100@gmail.com",
+            "password": "pardhu",
+            "cart": [
+                "3"
+            ]
+        },
+        {
+            "id": "4",
+            "name": "pavan",
+            "email": "pavan@gmail.com",
+            "password": "pavan",
+            "cart": []
+        }
+    ]
+}

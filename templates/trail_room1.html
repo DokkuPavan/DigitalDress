@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ashion Template">
+    <meta name="keywords" content="Ashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <title>Image Display</title>
+    <link rel="stylesheet" href="{% static 'css/trail_styles.css' %}">
+</head>
+<body>
+    {% include 'navigation.html' with trial="active"%}
+    <div class="card">
+        <div class="container">
+            <h2>Virtual Try-on</h2>
+            <div class="image-container">
+                <label for="image1" class="image-card" style="width:250px; height:340px;">
+                    <p id='label1'> Upload User Image </p>
+                    <input type="file" id="image1" name="image1" accept="image/*" onchange="previewImage(event, 'preview1', 'label1')" hidden>
+                    <span class="plus-symbol" id="plus1">+</span>
+                    <img id="preview1" src="" alt="Preview Image 1">
+                </label>
+                <label for="image2" class="image-card" style="width:250px; height:340px;">
+                    <img style="display:block" id="image2" name="image2" src="{{ image_url_dict }}">
+                </label>
+            </div>
+            <button onclick="showImage()">Generate</button>
+            <div class="image-container">
+                <img id="res" src="{% if output_image_path %}{{ output_image_path }}{% else %}{% static 'img/product/product-1.jpg' %}{% endif %}" alt="Result Image">
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden trigger element -->
+    <div id="imageUploadTrigger" style="display: none;"></div>
+
+    
+    <script>
+        function previewImage(event, previewId, labelId) {
+            document.getElementById(previewId).style.display = 'block';
+            document.getElementById("plus1").style.display = 'none';
+            document.getElementById(labelId).style.display = 'none';
+            const input = event.target;
+            const preview = document.getElementById(previewId);
+            const file = input.files[0];
+            const reader = new FileReader();
+    
+            reader.onload = function() {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    canvas.width = 768; // target width
+                    canvas.height = 1024; // target height
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    preview.src = canvas.toDataURL('image/jpeg');
+                };
+                img.src = reader.result;
+            };
+
+            console.log(file)
+    
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    
+        function showImage() {
+            document.getElementById('res').style.display = 'block';
+        }
+
+        
+    </script>
+
+    <!-- Js Plugins -->
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/mixitup.min.js' %}"></script>
+    <script src="{% static 'js/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.nicescroll.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

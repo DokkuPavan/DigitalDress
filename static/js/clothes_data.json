@@ -1,0 +1,84 @@
+{
+    "clothes": [
+        {
+            "id": "1",
+            "name": "Black top ",
+            "image_url": "/static/img/product/product-1.jpg",
+            "description": "A beautiful red dress for special occasions.",
+            "price": 5000,
+            "mrp": 7000,
+            "category": "col-lg-3 col-md-4 col-sm-6 mix women vintage ",
+            "stars":5
+        },
+        {
+            "id": "2",
+            "name": "Red Shirt",
+            "image_url": "/static/img/product/product-2.jpg",
+            "description": "A casual Red shirt for everyday wear.",
+            "price": 2000,
+            "mrp": 3000,
+            "category": "col-lg-3 col-md-4 col-sm-6 mix  men",
+            "stars":4
+        },
+        {
+            "id": "3",
+            "name": "Grey Shirt",
+            "image_url": "/static/img/product/product-3.jpg",
+            "description": "A casual Grey shirt for everyday wear.",
+            "price": 3000,
+            "mrp": 4000,
+            "category": "col-lg-3 col-md-4 col-sm-6 mix  men",
+            "stars":1
+        },
+        {
+            "id": "4",
+            "name": "Light Blue Top",
+            "image_url": "/static/img/product/product-4.jpg",
+            "description": "A casual blue  for Top everyday wear.",
+            "price": 4000,
+            "mrp": 4500,
+            "category": "col-lg-3 col-md-4 col-sm-6 mix women ",
+            "stars":4
+        },
+        {
+            "id": "5",
+            "name": "Red top",
+            "image_url": "/static/img/product/product-5.jpg",
+            "description": "A casual blue red top for everyday wear.",
+            "price": 4500,
+            "mrp": 6000,
+            "category": "col-lg-3 col-md-4 col-sm-6 mix women ",
+            "stars":4
+        },
+        {
+            "id": "6",
+            "name": "Blue Shirt",
+            "image_url": "/static/img/product/product-6.jpg",
+            "description": "A casual blue shirt for everyday wear.",
+            "price": 3000,
+            "mrp": 4200,
+            "category": "col-lg-3 col-md-4 col-sm-6 mix  men kid ",
+            "stars":4
+        },
+        {
+            "id": "7",
+            "name": "Blue Shirt",
+            "image_url": "/static/img/product/product-7.jpg",
+            "description": "A casual blue shirt for everyday wear.",
+            "price": 4500,
+            "mrp": 7000,
+            "category": "col-lg-3 col-md-4 col-sm-6 mix  men women",
+            "stars":4
+        },
+        {
+            "id": "8",
+            "name": "Black Shirt",
+            "image_url": "/static/img/product/product-8.jpg",
+            "description": "A casual blue shirt for everyday wear.",
+            "price": 3200,
+            "mrp": 4200,
+            "category": "col-lg-3 col-md-4 col-sm-6 mix  men",
+            "stars":4
+        }
+    ]
+}
