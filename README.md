@@ -1,4 +1,4 @@
-````markdown
+
 #  DigitalDress
 
 **DigitalDress** is a Django-based web app where users can upload their image and try virtual dresses. This simple and fun project demonstrates how Django handles image uploads, overlays, and interactive UI.
